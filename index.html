@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discover University Opportunities in South Korea</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            background: #3498db;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            transition: background 0.3s;
+        }
+
+        .cta-button:hover {
+            background: #2980b9;
+        }
+
+        /* Navigation */
+        nav {
+            background: #2c3e50;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 1.5rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 1rem;
+            display: block;
+        }
+
+        nav ul li a:hover {
+            background: #34495e;
+        }
+
+        /* Sections */
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+        }
+
+        /* Universities */
+        .universities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .university-card {
+            background: #f9f9f9;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .university-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .university-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .university-card h3 {
+            padding: 1rem;
+            font-size: 1.3rem;
+            color: #2c3e50;
+        }
+
+        .university-card p {
+            padding: 0 1rem 1rem;
+            color: #666;
+        }
+
+        /* Application Info */
+        .application-info {
+            background: #f9f9f9;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .application-info ul {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .application-info ul li {
+            margin: 0.5rem 0;
+            font-size: 1.1rem;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #2980b9;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        footer p {
+            margin-bottom: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            margin: 0 0.5rem;
+            text-decoration: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            header h1 {
+                font-size: 3rem;
+            }
+
+            .universities-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+
+            .university-card img {
+                height: 180px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                height: 80vh;
+            }
+
+            header h1 {
+                font-size: 2.5rem;
+            }
+
+            header p {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+
+            section {
+                padding: 2rem 1rem;
+            }
+
+            .contact-form {
+                padding: 1.5rem;
+            }
+
+            .university-card img {
+                height: 150px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                height: 60vh;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header p {
+                font-size: 0.9rem;
+            }
+
+            .cta-button {
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .universities-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .university-card img {
+                height: 200px;
+            }
+
+            .contact-form {
+                padding: 1rem;
+            }
+
+            .form-group input,
+            .form-group select,
+            .form-group textarea {
+                padding: 0.6rem;
+                font-size: 0.9rem;
+            }
+
+            button {
+                padding: 0.8rem;
+                font-size: 1rem;
+            }
+
+            .application-info {
+                padding: 1.5rem;
+            }
+
+            .application-info ul li {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Study in South Korea</h1>
+        <p>Explore world-class universities and vibrant student life in the heart of Asia</p>
+        <a href="#contact" class="cta-button">Get Started</a>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#universities">Universities</a></li>
+            <li><a href="#application">Apply</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="universities">
+        <h2>Top Universities in South Korea</h2>
+        <div class="universities-grid">
+            <div class="university-card">
+                <img src="korea national university.jpg" alt="Seoul National University">
+                <h3>Seoul National University</h3>
+                <p>Korea's premier institution, renowned for research and academic excellence.</p>
+            </div>
+            <div class="university-card">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c" alt="Korea University">
+                <h3>Korea University</h3>
+                <p>A prestigious university with strong programs in law, business, and humanities.</p>
+            </div>
+            <div class="university-card">
+                <img src="https://images.unsplash.com/photo-1562774053-701939374585" alt="Yonsei University">
+                <h3>Yonsei University</h3>
+                <p>Known for its global outlook and top-tier medical and engineering programs.</p>
+            </div>
+            <div class="university-card">
+                <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f" alt="KAIST">
+                <h3>KAIST</h3>
+                <p>A leading science and technology institute driving innovation in Korea.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="application">
+        <h2>How to Apply</h2>
+        <div class="application-info">
+            <p>Start your journey to study in South Korea with these steps:</p>
+            <ul>
+                <li>Choose your program and university</li>
+                <li>Check admission requirements (GPA, language proficiency)</li>
+                <li>Prepare documents (transcripts, recommendation letters)</li>
+                <li>Apply through university portals or Study in Korea website</li>
+                <li>Apply for a student visa (D-2) upon acceptance</li>
+            </ul>
+            <a href="#contact" class="cta-button">Contact Us for Guidance</a>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Get in Touch</h2>
+        <div class="contact-form">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" placeholder="Enter your name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="program">Interested Program</label>
+                <select id="program" required>
+                    <option value="">Select Program</option>
+                    <option value="undergraduate">Undergraduate</option>
+                    <option value="graduate">Graduate</option>
+                    <option value="exchange">Exchange Program</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" rows="5" placeholder="Your questions or comments" required></textarea>
+            </div>
+            <button onclick="alert('Inquiry submitted! We will contact you soon.')">Submit Inquiry</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>Contact us: info@studyinkorea.com | +82 2-9876-5432</p>
+        <div class="social-links">
+            <a href="#">Facebook</a>
+            <a href="#">Instagram</a>
+            <a href="#">Twitter</a>
+        </div>
+        <p>© 2025 Study in South Korea. All rights reserved.</p>
+    </footer>
+</body>
+</html>
